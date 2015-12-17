@@ -1,0 +1,35 @@
+# Query 3: 
+# Description: Querying drugs which have leukopenia or neutropenia as adverse events defined by SIDER
+# Results: 131 Rows. 
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX sider: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/sider:> 
+PREFIX atc: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/atc#> 
+PREFIX kegg: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg#> 
+PREFIX medisd: <http://h.u-tokyo.ac.jp/medis/drug#> 
+
+SELECT DISTINCT ?sider ?drug_code ?brand_name
+WHERE { 
+		GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/sider> {
+			?sider	sider:link_atc 		?atc;
+					sider:ae 			?ae.
+			?ae 	rdfs:label 			?label;
+					sider:lower_bound 	?lb.
+			FILTER (regex(?label, 'leukopenia', 'i') || regex(?label, 'neutropenia', 'i'))
+			FILTER (?lb > 0.3)
+		}
+		
+		GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/atc> {
+			?atc	atc:link_kegg ?kegg.
+		}
+		
+		GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg> {
+			?kegg	kegg:link_medis	?medis.
+		}
+   
+		GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/medis/drug> {
+			?medis	medisd:hot9_code		?drug_code;
+					medisd:kokuji_maisho	?brand_name.
+		}
+}

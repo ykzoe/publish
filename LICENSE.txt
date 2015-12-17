@@ -1,0 +1,14 @@
+
+
+ 1) ATC: Anatomical Therapeutic Chemical Classification System
+ http://www.whocc.no/atc_ddd_index/
+
+ 2) USP: U.S. Pharmacopeial Convention
+ http://www.usp.org/
+
+ 3 )KEGG:
+
+ 4) SIDER: Side Effect Resource
+ http://sideeffects.embl.de/
+
+ 5)

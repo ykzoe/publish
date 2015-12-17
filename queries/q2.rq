@@ -1,0 +1,33 @@
+# Query 2: 
+# Description: Querying atypical antipsychotic drugs which have 5HT2C or H1 receptor inhibitory effect. 
+# Results: 79 Rows. 
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kegg: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg#> 
+PREFIX medisd: <http://h.u-tokyo.ac.jp/medis/drug#> 
+PREFIX usp: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/usp#> 
+SELECT DISTINCT ?usp_sub_name ?drug_code ?brand_name
+WHERE {
+    GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/medis/drug> {
+		?medis	medisd:hot9_code ?drug_code;
+				medisd:kokuji_maisho ?brand_name.
+    }
+	
+    GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg> {
+		?kegg	kegg:link_medis	?medis; 
+				kegg:target 	?target.   
+        FILTER (regex(?target, 'H1-receptor antagonist', 'i') || regex(?target, '5-HT2C-receptor antagonist', 'i')). 
+    }
+	
+    GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/usp> {
+  		?usp rdfs:label	?label.
+  		FILTER (regex(?label, '2nd Generation/Atypical', "i")).
+  		?usp_sub rdfs:subClassOf ?usp;
+		  		 usp:link_kegg   ?kegg.
+				   
+		# This pattern is needed to show english name
+		?usp_sub 	rdfs:label ?usp_sub_name.		   
+    }
+} 

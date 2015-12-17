@@ -1,0 +1,33 @@
+# Query 1: 
+# Description: Querying drugs which are classified as "renin angiotensin inhibitors" in ATC Classification System 
+# Results: 476 Rows. 
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX kegg: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg#> 
+PREFIX medisd: <http://h.u-tokyo.ac.jp/medis/drug#> 
+PREFIX atc: <http://www.m.u-tokyo.ac.jp/medinfo/rdf/atc#>
+SELECT DISTINCT ?atc_sub_name ?drug_code ?brand_name
+WHERE {
+
+    GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/atc> {
+		?atc rdfs:label ?atc_name.
+   		FILTER regex(?atc_name, 'AGENTS ACTING ON THE RENIN-ANGIOTENSIN SYSTEM', 'i') 
+    	?atc_sub	rdfs:subClassOf ?atc;
+					atc:link_kegg ?kegg.
+		
+		# This patterns are needed to show english name
+		?atc_sub	rdfs:label ?atc_sub_name.
+		FILTER ( lang(?atc_sub_name) = "en" ) 
+      }
+
+    GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/kegg> {
+		?kegg	kegg:link_medis	?medis.
+     }   
+	
+	GRAPH <http://www.m.u-tokyo.ac.jp/medinfo/rdf/medis/drug> {
+		?medis	medisd:hot9_code		?drug_code;
+				medisd:kokuji_maisho	?brand_name.
+    }
+} 

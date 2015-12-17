@@ -6,9 +6,11 @@
  2) USP: U.S. Pharmacopeial Convention
  http://www.usp.org/
 
- 3 )KEGG:
+ 3) KEGG: Kyoto Encyclopedia of Genes and Genomes
+ http://www.genome.jp/kegg/
 
  4) SIDER: Side Effect Resource
  http://sideeffects.embl.de/
 
- 5)
+ 5) MEDIS
+ http://www.medis.or.jp/

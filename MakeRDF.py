@@ -2,6 +2,8 @@ import os
 import urllib.request
 import re
 
+# This script downloads raw data of UPS, ATC, and KEGG from the KEGG website to make corresponding RDF files.
+
 class make_rdf:
 
     rdfs_value = '<http://www.w3.org/1999/02/22-rdf-syntax-ns#value>'

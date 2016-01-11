@@ -33,7 +33,7 @@ To try these queries, you can download this project and do following instruction
 
  Results: 131 Rows.
 
- This query may take several minutes.
+ This query require your system memory 8gb or more, and may take several minutes.
 
       $ ./apache-jena-3.0.0/bin/arq --data ./rdf/atc_201512.nq --data ./rdf/medis_201506.nq --data ./rdf/kegg_201512.nq --data ./rdf/sider_201506.nq --query ./queries/q3.rq
 

@@ -9,7 +9,7 @@ To try these queries, you can download this project and do following instruction
 
 2. Unzip ./rdf/medis_201506.nq.zip and ./rdf/sider_201506.nq.zip
 
-3. Run 'MakeRDF.py' to get the other RDF files.
+3. Run 'MakeRDF.py' to make the other RDF files. This script downloads required resources and make RDF files automatically.
 
         $ python MakeRDF.py
 

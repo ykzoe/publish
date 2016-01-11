@@ -5,11 +5,14 @@ To try these queries, you can download this project and do following instruction
 
 ## Getting Started
 
-1. Make sure that Python 3.1 or later and Java 1.7 or later are installed. Also make sure your system has 8gb memory or more.
+1. Make sure that Python 3.1 or later and Java 1.7 or later are installed. 
+   Also make sure your system has 8gb memory or more.
 
 2. Unzip ./rdf/medis_201506.nq.zip and ./rdf/sider_201506.nq.zip
 
-3. Run 'MakeRDF.py' to make the other RDF files. This script downloads required resources and make RDF files automatically.
+3. Run 'MakeRDF.py' to make the other RDF files. 
+
+   This script downloads required resources and make RDF files automatically.
 
         $ python MakeRDF.py
 

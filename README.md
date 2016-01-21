@@ -13,7 +13,7 @@ To try these queries, you can download this project and do following instruction
 
 3. Run 'MakeRDF.py' to make the other RDF files. 
 
-   This script downloads required resources and makes RDF files automatically.
+   This script downloads necessary resources and makes RDF files automatically.
 
         $ python MakeRDF.py
 

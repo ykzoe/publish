@@ -1,6 +1,6 @@
 ## License
 1. Except as otherwise noted, this work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 4.0 License. 
-2. RDF files included in this project are Licensed by the providers of the original sources. Please see the following sites:
+2. RDF files included in this project are Licensed by providers of the the original sources. Please see the following sites:
 
  1) ATC: Anatomical Therapeutic Chemical Classification System
  http://www.whocc.no/atc_ddd_index/
@@ -14,7 +14,7 @@
  4) SIDER: Side Effect Resource
  http://sideeffects.embl.de/
 
- 5) MEDIS
+ 5) MEDIS-DC: Medical Information System Development Center
  http://www.medis.or.jp/
 
 ## Disclaimer
